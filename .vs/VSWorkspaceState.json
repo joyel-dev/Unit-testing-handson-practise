@@ -2,7 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\Customer",
+    "\\src\\LoanBasicDetails",
+    "\\src\\LoanEMIDetails",
     "\\test"
   ],
+  "SelectedNode": "\\test\\basic-details.test.js",
   "PreviewInSolutionExplorer": false
 }

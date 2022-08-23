@@ -28,5 +28,4 @@ describe('Loan EMI details', () => {
         expect(func.calledOnce).to.be.true;
     });
 
-
 });

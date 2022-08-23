@@ -13,8 +13,14 @@ describe('customer details', () => {
     it('spy the toEmidetails method', () => {
         const func = Sinon.stub(el, '_toEmidetails');
         el.shadowRoot.querySelector('lion-button').click();
-        expect(func.calledOnce).to.be.true;
+        expect(func.calledOnce).to.be.false;
     });
 
+/*    it('check for submithandler', async() => {
+    await el.shadowRoot.querySelector('lion-button').click();
+    const form = el.shadowRoot.querySelector('lion-form');
+    await el.updateComplete;   
+    expect(form.hasFeedbackFor[1]).to.equal('error');
+    });*/
 
 });

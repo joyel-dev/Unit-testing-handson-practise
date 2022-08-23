@@ -5,6 +5,7 @@ import '../loan-application.js';
 let el;
 
 describe('LoanApplication', () => {
+
     before(async () => {
         el = await fixture(html`<loan-application></loan-application>`);
     });
@@ -30,5 +31,39 @@ describe('LoanApplication', () => {
         }, 3000);
     })
 
-    
+    it('Check for counter type', () => {
+        setTimeout(async () => {
+            const el = await fixture(html`<dash-board></dash-board>`);
+            expect(el.counter).to.be.a('Number');
+        }, 2000);
+    });
+
+    it('Check for counter value', () => {
+        setTimeout(async () => {
+            const el = await fixture(html`<dash-board></dash-board>`);
+            expect(el.counter).toBe(5);
+        }, 2000);
+    });
+
+    it('check for DOM', async () => {
+        const el = await fixture(html`<div><dash-board></dash-board></div>`);
+        expect(el).dom.to.equal('<div><dash-board></dash-board></div>');
+        expect(el).lightDom.to.equal('<dash-board></dash-board>');
+    });
+
+    it('check for static shadowDom', async () => {
+        const el = (await fixture(html` <dash-board></dash-board> `));
+        expect(el).shadowDom.to.equal(`
+        <loan-header></loan-header>
+        <div id="outlet"></div>`);
+        expect(el).lightDom.to.equal(``)
+    });
+
+    it('passes the a11y audit', async () => {
+        const el = await fixture(html`
+        <dash-board></dash-board>`);
+        expect(el).shadowDom.to.be.accessible();
+    });
+
+
 });

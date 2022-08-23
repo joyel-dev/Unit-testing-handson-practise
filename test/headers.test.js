@@ -11,6 +11,13 @@ describe('loan-header', () => {
         expect(el).to.be.accessible();
     });
 
+    it('checks for the language change', async () => {
+        const func = Sinon.spy(el, "localeChanged");
+        button[0].click();
+        expect(func.calledOnce).to.be.true;
+        func.restore();
+    });
+
     it('check for the form class form basic', async () => {
         const div = el.shadowRoot.querySelector('div');
         expect(div).to.exist;
@@ -31,4 +38,5 @@ describe('loan-header', () => {
         button[1].click();
         expect(button[1]).to.have.class('bg-btn-color');
     });
+
 });

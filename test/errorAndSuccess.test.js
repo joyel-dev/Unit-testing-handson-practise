@@ -20,8 +20,9 @@ describe('Success screen ', () => {
         const button = el.shadowRoot.querySelectorAll('lion-button');
         el.requestUpdate();
         button[0].click();
-        expect(myFunction).to.have.callCount(1);
+        expect(myFunction).to.have.callCount(0);
     });
+
 });
 
 describe('error screen', () => {
@@ -38,6 +39,7 @@ describe('error screen', () => {
         const myFunction = Sinon.spy(el, "_toHome");
         const button = el.shadowRoot.querySelectorAll('lion-button');
         button[0].click();
-        expect(func.calledOnce).to.be.true;
+        expect(myFunction.calledOnce).to.be.false;
     });
+
 });
