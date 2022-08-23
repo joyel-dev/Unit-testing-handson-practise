@@ -10,25 +10,25 @@ const myFuctionStub = Sinon.stub(el, '_captureDetails');
 
 describe('Basic details', () => {
 
-    it('check for accessebility', () => {
+    it('Checking for accessebility', () => {
         expect(el).to.be.accessible;
     });
 
-    it('check for empty field validation', () => {
+    it('Checking for empty field validation', () => {
         const type = el.shadowRoot.querySelector('lion-input-amount');
         const amount = new Required();
         const errorMessage = amount._getMessage();
         expect(errorMessage).to.not.equal();
     });
 
-    it('capturedetails click button', async() => {
+    it('Checking for capturedetails', async() => {
         el.requestUpdate();
         await el.updateComplete;
         el.shadowRoot.querySelector('lion-button').click();
         expect(myFuctionStub).to.have.callCount(0);
     });
 
-    it('toDashboard click button', async () => {
+    it('Checking for toDashboard', async () => {
         const myFunction = Sinon.stub(el, '_toDashboard');
         el.requestUpdate();
         await el.updateComplete;
@@ -36,7 +36,7 @@ describe('Basic details', () => {
         expect(myFunction).to.have.callCount(1);
     });
 
-    it('check for id', async() => {
+    it('Checking for id', async() => {
         const el = await fixture('<div id = "word"></div>');
         expect(el.id).to.equal('word');
     });
@@ -51,7 +51,7 @@ describe('Basic details', () => {
         expect(el.amount).to.be.a('number');
     });
 
-    it('can instantiate an element', async () => {
+    it('Checking for element', async () => {
         const el = await fixture(html`<lion-input .value="text"></lion-input>`);
         expect(el.getAttribute(".value")).to.be.equal("text");
     });
@@ -61,7 +61,7 @@ describe('Basic details', () => {
         expect(el.emiCalc).to.be.equal(0);
     });
 
-    it('check captureDetails when clicked', async () => {
+    it('Checking captureDetails when clicked', async () => {
         setTimeout(async () => {
             const el = await fixture(html`<basic-details></basic-details>`);
             const spy = sinon.spy(el._captureDetails);
@@ -72,7 +72,7 @@ describe('Basic details', () => {
         }, 2000);
     });
 
-    it('check toDashBoard when clicked', async () => {
+    it('Checking toDashBoard when clicked', async () => {
         const el = await fixture(html`<basic-details></basic-details>`);
         const myFunctionStub = Sinon.stub(el, '_toDashboard');
         el.requestUpdate();
@@ -81,12 +81,12 @@ describe('Basic details', () => {
         expect(myFunctionStub).to.have.callCount(1);
     });
 
-    it('dom check', async () => {
+    it('Checking for DOM', async () => {
         const el = await fixture(`<basic-details><div id="word"></div></basic-details>`);
         expect(el).dom.to.equal('<basic-details><div id="word"></div></basic-details>');
     });
 
-    it('light-dom check', async () => {
+    it('Checking for light-dom', async () => {
         const el = await fixture(`<basic-details><div id="word"></div></basic-details>`);
         expect(el).lightDom.to.equal('<div id="word"></div>');
     });
